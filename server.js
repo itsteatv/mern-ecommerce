@@ -5,13 +5,16 @@ const notFound = require("./middlewares/not-found");
 const errorHandler = require("./middlewares/error-handler");
 const createDefaultData = require("./utils/create-default-data");
 const productsRouter = require("./routes/products");
+const cors = require("cors")
 
 dotnev.config();
 const app = express();
-
+app.use(cors({
+  origin: "http://localhost:5173"
+}));
 app.use(express.json());
 
-app.use("/api/v1/products" , productsRouter)
+app.use("/api/v1/products", productsRouter)
 
 app.use(notFound);
 app.use(errorHandler);
