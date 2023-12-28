@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        ">=445px": { "min": "9.375em", "max": "28.125em" },
+      },
+    },
   },
   darkMode: 'class',
   plugins: [],
