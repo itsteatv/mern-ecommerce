@@ -10,6 +10,6 @@ export interface Product {
 
 export interface ProductsResponse {
   isLoading: boolean;
-  isError: boolean;
+  error: Error | null;
   products: Product[];
 }

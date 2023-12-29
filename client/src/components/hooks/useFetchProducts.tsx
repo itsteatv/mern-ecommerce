@@ -4,7 +4,7 @@ import { ProductsResponse } from "../utils/Interfaces";
 
 export function useFetchProducts(): ProductsResponse {
   const {
-    isError,
+    error,
     isLoading,
     data: products,
   } = useQuery<ProductsResponse>({
@@ -12,5 +12,5 @@ export function useFetchProducts(): ProductsResponse {
     queryFn: FetchProducts,
   });
 
-  return { isError, isLoading, products: products?.products || [] };
+  return { error, isLoading, products: products?.products || [] };
 }
