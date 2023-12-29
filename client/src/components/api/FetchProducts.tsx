@@ -7,8 +7,8 @@ export const FetchProducts = async (): Promise<ProductsResponse> => {
   const data: ProductsResponse = await response.json();
 
   if (!response.ok) {
-    toast.error("Failed to fetch tasks");
-    throw new Error("Failed to fetch tasks");
+    toast.error("Failed to fetch products");
+    throw new Error("Failed to fetch products");
   }
 
   console.log(data);
