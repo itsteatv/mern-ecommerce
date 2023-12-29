@@ -1,4 +1,8 @@
-function ErrorFallback() {
+type ErrorFallbackProps = {
+  errorMessage: string | undefined;
+};
+
+function ErrorFallback({ errorMessage }: ErrorFallbackProps) {
   return (
     <>
       <div className="grid h-screen place-content-center bg-white px-4 dark:bg-gray-800">
@@ -27,7 +31,7 @@ function ErrorFallback() {
           </h1>
 
           <p className="mt-4 text-gray-500 dark:text-gray-400">
-            We can't find that page.
+            {errorMessage}
           </p>
         </div>
       </div>
