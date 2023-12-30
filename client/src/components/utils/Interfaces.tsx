@@ -13,3 +13,7 @@ export interface ProductsResponse {
   error: Error | null;
   products: Product[];
 }
+
+export interface ProductsPagination {
+  products: Product[];
+}
