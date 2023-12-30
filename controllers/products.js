@@ -34,10 +34,11 @@ const getAllProducts = async (req, res, next) => {
   const skip = (page - 1) * limit;
 
   result = result.skip(skip).limit(limit)
-  
+
   try {
     const products = await result;
-    res.json({ products });
+    const totalResult = await Product.countDocuments()
+    res.json({ products, totalResult });
   } catch (error) {
     next(error)
   }
@@ -47,7 +48,7 @@ const getSingleProduct = async (req, res, next) => {
   const productId = req.params.id;
   try {
     const product = await Product.findById(productId);
-    if(!product) {
+    if (!product) {
       throw new NotFoundError(`no product found with id ${productId}`)
     }
     res.json(product);

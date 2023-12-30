@@ -1,131 +1,180 @@
 [
-    {
-      "name": "accent chair",
-      "price": 25,
-      "company": "marcos",
-      "rating": 4
-    },
-    {
-      "name": "albany sectional",
-      "price": 109,
-      "company": "liddy",
-      "rating": 5
-    },
-    {
-      "name": "albany table",
-      "price": 309,
-      "company": "liddy",
-      "rating": 4.9
-    },
-    {
-      "name": "armchair",
-      "price": 125,
-      "company": "marcos",
-      "rating": 4.8
-    },
-    {
-      "name": "bar stool",
-      "price": 40,
-      "company": "liddy",
-      "rating": 4.6
-    },
-    {
-      "name": "dining table",
-      "price": 42,
-      "company": "ikea",
-      "rating": 4.55
-    },
-    {
-      "name": "emperor bed",
-      "price": 23,
-      "company": "ikea"
-    },
-    {
-      "name": "entertainment center",
-      "price": 59,
-      "featured": true,
-      "company": "caressa"
-    },
-    {
-      "name": "high-back bench",
-      "price": 39,
-      "featured": true,
-      "company": "ikea"
-    },
-  
-    {
-      "name": "leather sofa",
-      "price": 99,
-      "company": "caressa"
-    },
-    {
-      "name": "modern bookshelf",
-      "price": 31,
-      "featured": true,
-      "company": "caressa"
-    },
-    {
-      "name": "modern poster",
-      "price": 30,
-      "company": "liddy"
-    },
-    {
-      "name": "shelf",
-      "price": 30,
-      "company": "ikea"
-    },
-    {
-      "name": "simple chair",
-      "price": 109,
-      "company": "liddy"
-    },
-    {
-      "name": "sofa set",
-      "price": 129,
-      "company": "marcos"
-    },
-    {
-      "name": "suede armchair",
-      "price": 15,
-      "company": "caressa"
-    },
-    {
-      "name": "utopia sofa",
-      "price": 79,
-      "featured": true,
-      "company": "liddy"
-    },
-    {
-      "name": "vase table",
-      "price": 120,
-      "featured": true,
-      "company": "marcos"
-    },
-    {
-      "name": "wooden bed",
-      "price": 25,
-      "company": "ikea"
-    },
-    {
-      "name": "wooden desk",
-      "price": 15,
-      "company": "ikea"
-    },
-    {
-      "name": "wooden desk",
-      "price": 40,
-      "company": "ikea"
-    },
-    {
-      "name": "wooden table",
-      "price": 23,
-      "featured": true,
-      "company": "caressa"
-    },
-    {
-      "name": "a first wooden table",
-      "price": 23,
-      "featured": true,
-      "company": "caressa"
-    }
-  ]
+  {
+    "name": "accent chair",
+    "price": 25,
+    "company": "The Crafts Company",
+    "rating": 4
+  },
+  {
+    "name": "albany sectional",
+    "price": 109,
+    "company": "The Crafts Company",
+    "rating": 5
+  },
+  {
+    "name": "albany table",
+    "price": 309,
+    "company": "The Crafts Company",
+    "rating": 4.9
+  },
+  {
+    "name": "armchair",
+    "price": 125,
+    "company": "The Crafts Company",
+    "rating": 4.8
+  },
+  {
+    "name": "bar stool",
+    "price": 40,
+    "company": "Nanotechnology, Inc.",
+    "rating": 4.6
+  },
+  {
+    "name": "dining table",
+    "price": 42,
+    "company": "Nanotechnology, Inc.",
+    "rating": 4.55
+  },
+  {
+    "name": "emperor bed",
+    "price": 23,
+    "company": "Nanotechnology, Inc."
+  },
+  {
+    "name": "entertainment center",
+    "price": 59,
+    "featured": true,
+    "company": "Nanotechnology, Inc."
+  },
+  {
+    "name": "high-back bench",
+    "price": 39,
+    "featured": true,
+    "company": "Nanotechnology, Inc."
+  },
+  {
+    "name": "leather sofa",
+    "price": 99,
+    "company": "Nanotechnology, Inc."
+  },
+  {
+    "name": "modern bookshelf",
+    "price": 31,
+    "featured": true,
+    "company": "Nanotechnology, Inc."
+  },
+  {
+    "name": "modern poster",
+    "price": 30,
+    "company": "Nanotechnology, Inc."
+  },
+  {
+    "name": "shelf",
+    "price": 30,
+    "company": "Nanotechnology, Inc."
+  },
+  {
+    "name": "simple chair",
+    "price": 109,
+    "company": "Nanotechnology, Inc."
+  },
+  {
+    "name": "sofa set",
+    "price": 129,
+    "company": "Nanotechnology, Inc."
+  },
+  {
+    "name": "suede armchair",
+    "price": 15,
+    "company": "Nanotechnology, Inc."
+  },
+  {
+    "name": "utopia sofa",
+    "price": 79,
+    "featured": true,
+    "company": "Nanotechnology, Inc."
+  },
+  {
+    "name": "vase table",
+    "price": 120,
+    "featured": true,
+    "company": "Nanotechnology, Inc."
+  },
+  {
+    "name": "wooden bed",
+    "price": 25,
+    "company": "Nanotechnology, Inc."
+  },
+  {
+    "name": "wooden desk",
+    "price": 15,
+    "company": "Nanotechnology, Inc."
+  },
+  {
+    "name": "wooden desk",
+    "price": 40,
+    "company": "Nanotechnology, Inc."
+  },
+  {
+    "name": "wooden table",
+    "price": 23,
+    "featured": true,
+    "company": "Nanotechnology, Inc."
+  },
+  {
+    "name": "a first wooden table",
+    "price": 23,
+    "featured": true,
+    "company": "Nanotechnology, Inc."
+  },
+  {
+    "name": "kitchen equipment",
+    "price": 109.95,
+    "company": "Cosmetics, Ltd."
+  },
+  {
+    "name": "car item",
+    "price": 125,
+    "company": "Pharmaceuticals, Incorporated"
+  },
+  {
+    "name": "fitness mechanism",
+    "price": 43,
+    "company": "Education Co."
+  },
+  {
+    "name": "skin care equipment",
+    "price": 154.99,
+    "company": "Nanotechnology, Inc."
+  },
+  {
+    "name": "computer whatchamacallit",
+    "price": 92,
+    "company": "Environmental Services, Incorporated"
+  },
+  {
+    "name": "movie kit",
+    "price": 193.99,
+    "company": "The Crafts Company"
+  },
+  {
+    "name": "movie apparatus",
+    "price": 44.95,
+    "company": "Human Resources Co."
+  },
+  {
+    "name": "baby gadget",
+    "price": 25.99,
+    "company": "Glass, Ltd."
+  },
+  {
+    "name": "kitchen component",
+    "price": 185.99,
+    "company": "Automotive, Inc."
+  },
+  {
+    "name": "medicine accessory",
+    "price": 146.95,
+    "company": "The Photography Company"
+  }
+]
