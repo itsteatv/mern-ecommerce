@@ -12,8 +12,11 @@ export interface ProductsResponse {
   isLoading: boolean;
   error: Error | null;
   products: Product[];
+  totalResult: number;
 }
 
 export interface ProductsPagination {
+  isLoading?: boolean;
+  error?: Error | null;
   products: Product[];
 }
