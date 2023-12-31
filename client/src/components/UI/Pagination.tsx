@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import { PAGE_SIZE } from "../utils/PageSize";
+import { PAGE_SIZES } from "../utils/PageSize";
 
 type PaginationProps = {
   totalResult: number;
@@ -10,10 +10,17 @@ function Pagination({ totalResult }: PaginationProps) {
   const currentPage = Number(searchParams.get("page")) || 1;
 
   const handlePageChange = (newPage: number) => {
-    setSearchParams({ page: newPage.toString() });
+    setSearchParams({
+      page: newPage.toString(),
+      pageSize: pageSize.toString(),
+    });
   };
 
-  const pageSize = PAGE_SIZE;
+  const handlePageSizeChange = (newPageSize: number) => {
+    setSearchParams({ page: "1", pageSize: newPageSize.toString() });
+  };
+
+  const pageSize = Number(searchParams.get("pageSize")) || PAGE_SIZES[0];
   const totalPages = Math.ceil(totalResult / pageSize);
 
   const startResult = (currentPage - 1) * pageSize + 1;
@@ -88,10 +95,39 @@ function Pagination({ totalResult }: PaginationProps) {
         </button>
       </nav>
 
+      {/* PAGE SIZE DROPDOWN */}
+      <div className="flex items-center my-1">
+        <label htmlFor="pageSize" className="italic text-gray-500 mr-2 text-sm">
+          Page Size:
+        </label>
+        <select
+          id="pageSize"
+          className="border p-1 rounded-lg"
+          value={pageSize}
+          onChange={(e) => handlePageSizeChange(Number(e.target.value))}
+        >
+          {PAGE_SIZES.map((size) => (
+            <option key={size} value={size}>
+              {size}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <p className="italic text-gray-500 text-sm mt-2">
-        Showing <span className="dark:text-white text-gray-800 font-bold">{startResult}</span> to{" "}
-        <span className="dark:text-white text-gray-800 font-bold">{endResult}</span> of{" "}
-        <span className="dark:text-white text-gray-800 font-bold">{totalResult}</span> results
+        Showing{" "}
+        <span className="dark:text-white text-gray-800 font-bold">
+          {startResult}
+        </span>{" "}
+        to{" "}
+        <span className="dark:text-white text-gray-800 font-bold">
+          {endResult}
+        </span>{" "}
+        of{" "}
+        <span className="dark:text-white text-gray-800 font-bold">
+          {totalResult}
+        </span>{" "}
+        results
       </p>
     </>
   );

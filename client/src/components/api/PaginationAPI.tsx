@@ -3,9 +3,12 @@ import { url } from "../utils/Url";
 import toast from "react-hot-toast";
 
 export const PaginationAPI = async (
-  page: number
+  page: number,
+  pageSize: number
 ): Promise<ProductsResponse> => {
-  const response = await fetch(`${url}/api/v1/products?page=${page}`);
+  const response = await fetch(
+    `${url}/api/v1/products?page=${page}&limit=${pageSize}`
+  );
   const data: ProductsResponse = await response.json();
 
   if (!response.ok) {
