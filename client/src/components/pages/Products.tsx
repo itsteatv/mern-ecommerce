@@ -2,8 +2,16 @@ import { useFetchProducts } from "../hooks/useFetchProducts";
 import ErrorFallback from "../ui/ErrorFallback";
 import Ratings from "../ui/Ratings";
 import SkeletonLoading from "../ui/SkeletonLoading";
+import Pagination from "../ui/Pagination";
+import { usePagination } from "../hooks/usePagination";
+
 function Products() {
-  const { error, isLoading, products } = useFetchProducts();
+  const { error, isLoading, products: paginationProducts } = usePagination();
+  const { products, totalResult } = useFetchProducts();
+
+  console.log(products);
+  console.log(totalResult);
+  console.log(paginationProducts);
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("en-US", {
@@ -17,8 +25,8 @@ function Products() {
     return (
       <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto min-h-screen flex items-center flex-col justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-          {products.map((product) => (
-            <div key={product._id}>
+          {Array.from({ length: 2 }).map((_, index) => (
+            <div key={index}>
               <SkeletonLoading />
             </div>
           ))}
@@ -27,14 +35,14 @@ function Products() {
     );
   }
 
-  if (error || products.length === 0) {
-    return <ErrorFallback errorMessage={error?.message} />;
+  if (error || paginationProducts.length === 0) {
+    return <ErrorFallback errorMessage={error?.message || "No Data Found"} />;
   }
 
   return (
     <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto min-h-screen flex items-center flex-col justify-center">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-        {products.map((product) => (
+        {paginationProducts.map((product) => (
           <div
             key={product._id}
             className="bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700"
@@ -63,6 +71,7 @@ function Products() {
           </div>
         ))}
       </div>
+      <Pagination totalResult={totalResult} />
     </div>
   );
 }
