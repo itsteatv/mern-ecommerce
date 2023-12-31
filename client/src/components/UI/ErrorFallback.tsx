@@ -1,8 +1,16 @@
+import { useNavigate } from "react-router-dom";
+
 type ErrorFallbackProps = {
   errorMessage: string | undefined;
 };
 
 function ErrorFallback({ errorMessage }: ErrorFallbackProps) {
+  const navigate = useNavigate();
+
+  const handleTryAgain = function () {
+    navigate("/", { replace: true });
+  };
+
   return (
     <>
       <div className="grid h-screen place-content-center bg-white px-4 dark:bg-gray-800">
@@ -31,7 +39,13 @@ function ErrorFallback({ errorMessage }: ErrorFallbackProps) {
           </h1>
 
           <p className="mt-4 text-gray-500 dark:text-gray-400">
-            {errorMessage}
+            {errorMessage} |{" "}
+            <span
+              className="italic cursor-pointer hover:text-gray-300 duration-300"
+              onClick={handleTryAgain}
+            >
+              Try Again
+            </span>
           </p>
         </div>
       </div>
