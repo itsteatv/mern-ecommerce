@@ -13,11 +13,16 @@ function Pagination({ totalResult }: PaginationProps) {
     setSearchParams({
       page: newPage.toString(),
       pageSize: pageSize.toString(),
+      search: searchParams.get("search") || "",
     });
   };
 
   const handlePageSizeChange = (newPageSize: number) => {
-    setSearchParams({ page: "1", pageSize: newPageSize.toString() });
+    setSearchParams({
+      page: "1",
+      pageSize: newPageSize.toString(),
+      search: searchParams.get("search") || "",
+    });
   };
 
   const pageSize = Number(searchParams.get("pageSize")) || PAGE_SIZES[0];
