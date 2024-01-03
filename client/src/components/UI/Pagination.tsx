@@ -59,7 +59,6 @@ function Pagination({ totalResult }: PaginationProps) {
           <span>Previous</span>
         </button>
         <div className="flex items-center gap-x-1">
-          {/* Render page buttons dynamically */}
           {Array.from({ length: totalPages }, (_, index) => (
             <button
               key={index + 1}
