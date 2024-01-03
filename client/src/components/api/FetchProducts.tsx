@@ -4,15 +4,11 @@ import toast from "react-hot-toast";
 
 export const FetchProducts = async (
   page: number,
-  pageSize: number,
-  searchQuery: string
+  pageSize: number
 ): Promise<ProductsResponse> => {
-  let apiUrl = `${url}/api/v1/products?page=${page}&limit=${pageSize}`;
-  if (searchQuery) {
-    apiUrl += `&search=${searchQuery}`;
-  }
-
-  const response = await fetch(apiUrl);
+  const response = await fetch(
+    `${url}/api/v1/products?page=${page}&limit=${pageSize}`
+  );
   const data: ProductsResponse = await response.json();
 
   if (!response.ok) {

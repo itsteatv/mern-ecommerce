@@ -1,5 +1,3 @@
-import { QueryObserverResult, RefetchOptions } from "@tanstack/react-query";
-
 export interface Product {
   _id: string;
   name: string;
@@ -15,7 +13,4 @@ export interface ProductsResponse {
   error: Error | null;
   products: Product[];
   totalResult: number;
-  refetch: (
-    options?: RefetchOptions
-  ) => Promise<QueryObserverResult<ProductsResponse, Error>>;
 }

@@ -13,16 +13,11 @@ function Pagination({ totalResult }: PaginationProps) {
     setSearchParams({
       page: newPage.toString(),
       pageSize: pageSize.toString(),
-      search: searchParams.get("search") || "",
     });
   };
 
   const handlePageSizeChange = (newPageSize: number) => {
-    setSearchParams({
-      page: "1",
-      pageSize: newPageSize.toString(),
-      search: searchParams.get("search") || "",
-    });
+    setSearchParams({ page: "1", pageSize: newPageSize.toString() });
   };
 
   const pageSize = Number(searchParams.get("pageSize")) || PAGE_SIZES[0];
@@ -59,6 +54,7 @@ function Pagination({ totalResult }: PaginationProps) {
           <span>Previous</span>
         </button>
         <div className="flex items-center gap-x-1">
+          {/* Render page buttons dynamically */}
           {Array.from({ length: totalPages }, (_, index) => (
             <button
               key={index + 1}
