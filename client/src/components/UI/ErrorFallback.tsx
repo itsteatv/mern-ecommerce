@@ -1,14 +1,10 @@
-import { useNavigate } from "react-router-dom";
-
 type ErrorFallbackProps = {
   errorMessage: string | undefined;
 };
 
 function ErrorFallback({ errorMessage }: ErrorFallbackProps) {
-  const navigate = useNavigate();
-
   const handleTryAgain = function () {
-    navigate("/", { replace: true });
+    window.location.reload();
   };
 
   return (
