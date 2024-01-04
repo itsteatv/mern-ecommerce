@@ -21,12 +21,11 @@ function Pagination({ totalResult }: PaginationProps) {
   };
 
   const pageSize = Number(searchParams.get("pageSize")) || PAGE_SIZES[0];
-  const totalPages = Math.ceil(totalResult / pageSize);
 
+  // FOR ALL PRODUCTS
+  const totalPages = Math.ceil(totalResult / pageSize);
   const startResult = (currentPage - 1) * pageSize + 1;
   const endResult = Math.min(currentPage * pageSize, totalResult);
-
-  console.log(currentPage);
 
   return (
     <>
@@ -54,7 +53,6 @@ function Pagination({ totalResult }: PaginationProps) {
           <span>Previous</span>
         </button>
         <div className="flex items-center gap-x-1">
-          {/* Render page buttons dynamically */}
           {Array.from({ length: totalPages }, (_, index) => (
             <button
               key={index + 1}

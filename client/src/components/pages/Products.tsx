@@ -3,9 +3,12 @@ import ErrorFallback from "../ui/ErrorFallback";
 import Ratings from "../ui/Ratings";
 import SkeletonLoading from "../ui/SkeletonLoading";
 import Pagination from "../ui/Pagination";
+import SearchInput from "../ui/SearchInput";
+import { useState } from "react";
 
 function Products() {
   const { products, totalResult, error, isLoading } = useFetchProducts();
+  const [searchTerm, setSearchTerm] = useState("");
 
   console.log(products);
   console.log(totalResult);
@@ -17,6 +20,12 @@ function Products() {
       minimumFractionDigits: 2,
     }).format(price);
   };
+
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  console.log(filteredProducts);
 
   if (isLoading) {
     return (
@@ -38,8 +47,14 @@ function Products() {
 
   return (
     <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto min-h-screen flex items-center flex-col justify-center">
+      <SearchInput
+        type="text"
+        value={searchTerm}
+        placeholder="Enter the product name"
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <div
             key={product._id}
             className="bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700"
