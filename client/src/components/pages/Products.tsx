@@ -53,37 +53,44 @@ function Products() {
         placeholder="Enter the product name"
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-        {filteredProducts.map((product) => (
-          <div
-            key={product._id}
-            className="bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700"
-          >
-            <div className="p-4 md:p-6 dark:text-white">
-              {product.name}
-              <p className="mt-3 sm:mt-6 text-base text-gray-800 md:text-xl dark:text-white">
-                <em>
-                  " I'm absolutely floored by the level of care and attention to
-                  detail the team at HS have put into this theme and for one can
-                  guarantee that I will be a return customer. "
-                </em>
-              </p>
-            </div>
-            <div className="p-4 rounded-b-xl md:px-6">
-              <h3 className=">=445px:flex >=445px:justify-center text-sm font-semibold text-gray-800 sm:text-base dark:text-gray-200">
-                {formatPrice(product.price)}
-              </h3>
-              <div className="dark:text-slate-500 italic text-sx mt-1 >=445px:text-center">
-                {product.company} company
+      {filteredProducts.length === 0 ? (
+        <ErrorFallback errorMessage="No Result Found" />
+      ) : (
+        <>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+            {filteredProducts.map((product) => (
+              <div
+                key={product._id}
+                className="bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700"
+              >
+                <div className="p-4 md:p-6 dark:text-white">
+                  {product.name}
+                  <p className="mt-3 sm:mt-6 text-base text-gray-800 md:text-xl dark:text-white">
+                    <em>
+                      " I'm absolutely floored by the level of care and
+                      attention to detail the team at HS have put into this
+                      theme and for one can guarantee that I will be a return
+                      customer. "
+                    </em>
+                  </p>
+                </div>
+                <div className="p-4 rounded-b-xl md:px-6">
+                  <h3 className=">=445px:flex >=445px:justify-center text-sm font-semibold text-gray-800 sm:text-base dark:text-gray-200">
+                    {formatPrice(product.price)}
+                  </h3>
+                  <div className="dark:text-slate-500 italic text-sx mt-1 >=445px:text-center">
+                    {product.company} company
+                  </div>
+                  <div className="flex text-sm items-center text-gray-500 mt-1 >=445px:justify-center">
+                    <Ratings ratings={product.rating} />
+                  </div>
+                </div>
               </div>
-              <div className="flex text-sm items-center text-gray-500 mt-1 >=445px:justify-center">
-                <Ratings ratings={product.rating} />
-              </div>
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <Pagination totalResult={totalResult} />
+          <Pagination totalResult={totalResult} />
+        </>
+      )}
     </div>
   );
 }
