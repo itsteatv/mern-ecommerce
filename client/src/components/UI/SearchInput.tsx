@@ -10,7 +10,7 @@ function SearchInput({ type, placeholder, value, onChange }: SearchInputProps) {
     <input
       type={type}
       value={value}
-      className="py-3 px-5 mb-4 block w-full border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+      className="max-w-[20rem] py-3 px-5 mb-4 w-full placeholder:text-center placeholder:text-searchInputPlaceholder border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
       placeholder={placeholder}
       onChange={onChange}
     />

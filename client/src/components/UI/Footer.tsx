@@ -7,9 +7,9 @@ function Footer() {
         Footer
       </h2>
       <div className="px-4 py-12 mx-auto dark:bg-gray-800 duration-300 shadow-lg bg-gray-50 max-w-full sm:px-6 lg:px-16">
-        <div className="flex flex-wrap items-center justify-center lg:justify-center">
+        <div className="flex flex-wrap items-center justify-center lg:justify-center >=340px:text-center">
           <ThemeSwitcher />
-          <span className="text-sm font-light dark:text-white text-gray-500">
+          <span className="text-footer font-light dark:text-white text-gray-500">
             Copyright © 2023 - 2024
             <a
               href="https://github.com/itsteatv"

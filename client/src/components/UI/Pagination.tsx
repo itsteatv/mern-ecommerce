@@ -50,7 +50,7 @@ function Pagination({
   return (
     <>
       {totalResult ? (
-        <nav className="flex items-center gap-x-1 mt-10">
+        <nav className="flex items-center gap-x-1 mt-10 >=340px:flex-col">
           <button
             type="button"
             className="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-1.5 text-sm rounded-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
@@ -73,7 +73,7 @@ function Pagination({
             </svg>
             <span>Previous</span>
           </button>
-          <div className="flex items-center gap-x-1">
+          <div className="flex items-center gap-x-1 >=340px:flex-col">
             {Array.from({ length: totalPages }, (_, index) => (
               <button
                 key={index + 1}
@@ -200,7 +200,7 @@ function Pagination({
       </div>
 
       {searchTerm ? (
-        <p className="italic text-gray-500 text-sm mt-2">
+        <p className="italic text-gray-500 text-sm mt-2 text-center">
           {startFilteredResult > 0 ? (
             <>
               We found{" "}
@@ -222,7 +222,7 @@ function Pagination({
         </p>
       ) : (
         <div>
-          <p className="italic text-gray-500 text-sm mt-2">
+          <p className="italic text-gray-500 text-sm mt-2 text-center">
             Showing{" "}
             <span className="dark:text-white text-gray-800 font-bold">
               {startResult}
