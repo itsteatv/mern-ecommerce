@@ -1,6 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import { PAGE_SIZES } from "../utils/PageSize";
 import { Product } from "../utils/Interfaces";
+import PageSizeDropdown from "./PageSizeDropdown";
 
 type PaginationProps = {
   totalResult: number;
@@ -180,24 +181,10 @@ function Pagination({
         </nav>
       )}
 
-      {/* PAGE SIZE DROPDOWN */}
-      <div className="flex items-center my-1">
-        <label htmlFor="pageSize" className="italic text-gray-500 mr-2 text-sm">
-          Page Size:
-        </label>
-        <select
-          id="pageSize"
-          className="border p-1 rounded-lg"
-          value={pageSize}
-          onChange={(e) => handlePageSizeChange(Number(e.target.value))}
-        >
-          {PAGE_SIZES.map((size) => (
-            <option key={size} value={size}>
-              {size}
-            </option>
-          ))}
-        </select>
-      </div>
+      <PageSizeDropdown
+        value={pageSize}
+        onChange={(value) => handlePageSizeChange(value)}
+      />
 
       {searchTerm ? (
         <p className="italic text-gray-500 text-sm mt-2 text-center">
