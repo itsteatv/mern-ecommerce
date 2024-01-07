@@ -1,5 +1,3 @@
-import React from "react";
-
 import { PAGE_SIZES } from "../utils/PageSize";
 
 type PageSizeDropdownProps = {
