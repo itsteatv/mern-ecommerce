@@ -6,22 +6,33 @@ import Pagination from "../ui/Pagination";
 import SearchInput from "../ui/SearchInput";
 import { useEffect, useState } from "react";
 import { Product } from "../utils/Interfaces";
+import { companyFilterOptions } from "../utils/CompanyFilterOptions";
+import CompanyFilterDropdown from "../ui/CompanyFilterDropdown";
 
 function Products() {
   const { products, totalResult, error, isLoading } = useFetchProducts();
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [selectedCompany, setSelectedCompany] = useState<string>("");
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
   useEffect(() => {
+    let filteredResults = products;
+
     if (searchTerm) {
-      const filteredResults = products.filter((product) =>
+      filteredResults = filteredResults.filter((product) =>
         product.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
-      setFilteredProducts(filteredResults);
     } else {
       setFilteredProducts([]);
     }
-  }, [products, searchTerm]);
+
+    if (selectedCompany) {
+      filteredResults = filteredResults.filter(
+        (product) => product.company === selectedCompany
+      );
+    }
+    setFilteredProducts(filteredResults);
+  }, [products, searchTerm, selectedCompany]);
 
   console.log(products);
   console.log(totalResult);
@@ -54,16 +65,24 @@ function Products() {
     return <ErrorFallback errorMessage={error?.message || "No Data Found"} />;
   }
 
-  const displayProducts = searchTerm ? filteredProducts : products;
+  const displayProducts =
+    searchTerm || selectedCompany ? filteredProducts : products;
 
   return (
     <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto min-h-screen flex items-center flex-col justify-center">
-      <SearchInput
-        type="text"
-        value={searchTerm}
-        placeholder="Enter the product name"
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
+      <div className="flex items-center justify-center flex-col mb-4">
+        <SearchInput
+          type="text"
+          value={searchTerm}
+          placeholder="Enter the product name"
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <CompanyFilterDropdown
+          options={companyFilterOptions}
+          selectedCompany={selectedCompany}
+          onSelectCompany={(company) => setSelectedCompany(company)}
+        />
+      </div>
       {displayProducts.length === 0 ? (
         <ErrorFallback errorMessage="No Result Found" />
       ) : (
