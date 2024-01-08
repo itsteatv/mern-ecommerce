@@ -122,6 +122,7 @@ function Products() {
         filteredProductsLength={filteredProducts.length}
         filteredProducts={filteredProducts}
         searchTerm={searchTerm}
+        selectedCompany={selectedCompany}
       />
     </div>
   );

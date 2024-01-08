@@ -8,6 +8,7 @@ type PaginationProps = {
   filteredProductsLength: number;
   filteredProducts: Product[];
   searchTerm: string;
+  selectedCompany: string;
 };
 
 function Pagination({
@@ -15,6 +16,7 @@ function Pagination({
   filteredProductsLength,
   filteredProducts,
   searchTerm,
+  selectedCompany,
 }: PaginationProps) {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
@@ -32,20 +34,23 @@ function Pagination({
 
   const pageSize = Number(searchParams.get("pageSize")) || PAGE_SIZES[0];
 
+  console.log(selectedCompany);
+
   // FOR ALL PRODUCTS
   const totalPages = Math.ceil(totalResult / pageSize);
   const startResult = (currentPage - 1) * pageSize + 1;
   const endResult = Math.min(currentPage * pageSize, totalResult);
 
+  // FOR SEARCHED PRODUCTS
   const searchedProducts = filteredProducts.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  // FOR FILTERED PRODUCTS
-  // const totalFilteredPages = filteredProductsLength;
-  // const endFilteredResult = Math.min(currentPage * pageSize, pageSize);
   const startFilteredResult = searchedProducts.length;
-
   const endResultOnPage = Math.min(currentPage * pageSize, totalResult);
+  const endFilteredResult = Math.min(currentPage * pageSize, pageSize);
+  const totalFilteredPages = filteredProductsLength;
+
+  // FOR FILTERED PRODUCTS (BASED ON COMPANY NAME)
 
   return (
     <>
@@ -118,7 +123,7 @@ function Pagination({
         onChange={(value) => handlePageSizeChange(value)}
       />
 
-      {searchTerm ? (
+      {searchTerm && !selectedCompany && (
         <p className="italic text-gray-500 text-sm mt-2 text-center">
           {startFilteredResult > 0 ? (
             <>
@@ -139,7 +144,37 @@ function Pagination({
             result{endResultOnPage - startResult + 1 !== 1 && "s"} in this page
           </span>
         </p>
-      ) : (
+      )}
+
+      {!searchTerm && selectedCompany && (
+        <p className="italic text-gray-500 text-sm mt-2 text-center">
+          {startFilteredResult > 0 ? (
+            <>
+              We found{" "}
+              <span className="dark:text-white text-gray-800 font-bold">
+                {totalFilteredPages}
+              </span>{" "}
+              results{" "}
+              <span className="italic text-gray-500 text-sm mt-2">of </span>{" "}
+              <span className="dark:text-white text-gray-800 font-bold">
+                {endResultOnPage - startResult + 1}
+              </span>{" "}
+              <span className="ml-1">
+                result{endResultOnPage - startResult + 1 !== 1 && "s"}
+              </span>{" "}
+              for{" "}
+              <span className="dark:text-white text-gray-800 font-bold">
+                {selectedCompany}
+              </span>{" "}
+              company
+            </>
+          ) : (
+            `No results found for ${selectedCompany} company`
+          )}
+        </p>
+      )}
+
+      {!searchTerm && !selectedCompany && (
         <div>
           <p className="italic text-gray-500 text-sm mt-2 text-center">
             Showing{" "}
@@ -157,6 +192,33 @@ function Pagination({
             results
           </p>
         </div>
+      )}
+
+      {searchTerm && selectedCompany && (
+        <p className="italic text-gray-500 text-sm mt-2 text-center">
+          {startFilteredResult > 0 ? (
+            <>
+              We found{" "}
+              <span className="dark:text-white text-gray-800 font-bold">
+                {startFilteredResult}
+              </span>{" "}
+              result{startFilteredResult !== 1 ? "s" : ""}{" "}
+            </>
+          ) : (
+            "No results found"
+          )}{" "}
+          <span className="italic text-gray-500 text-sm mt-2">of </span>{" "}
+          <span className="dark:text-white text-gray-800 font-bold">
+            {endResultOnPage - startResult + 1}
+          </span>
+          <span className="ml-1">
+            result{endResultOnPage - startResult + 1 !== 1 && "s"} in this page{" "}
+            for{" "}
+            <span className="dark:text-white text-gray-800 font-bold">
+              {selectedCompany}
+            </span>
+          </span>
+        </p>
       )}
     </>
   );
