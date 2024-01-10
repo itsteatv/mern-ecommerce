@@ -107,7 +107,9 @@ function Products() {
                   {formatPrice(product.price)}
                 </h3>
                 <div className="dark:text-slate-500 italic text-sx mt-1 >=445px:text-center">
-                  {product.company} company
+                  {product.company.toLowerCase().endsWith("company")
+                    ? product.company
+                    : `${product.company} Company`}{" "}
                 </div>
                 <div className="flex text-sm items-center text-gray-500 mt-1 >=445px:justify-center">
                   <Ratings ratings={product.rating} />
