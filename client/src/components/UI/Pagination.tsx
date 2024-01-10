@@ -158,7 +158,7 @@ function Pagination({
               <span className="italic text-gray-500 text-sm mt-2">of </span>{" "}
               <span className="dark:text-white text-gray-800 font-bold">
                 {endResultOnPage - startResult + 1}
-              </span>{" "}
+              </span>
               <span className="ml-1">
                 result{endResultOnPage - startResult + 1 !== 1 && "s"}
               </span>{" "}
